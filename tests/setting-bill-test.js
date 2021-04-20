@@ -185,6 +185,22 @@ describe("The bill with setting factory function", function() {
             assert.equal("critical", settingsBill.totalClassName());
         });
 
+         it("it should allow the total to increase after reaching the critical level & then upping the critical level", function(){
+            let settingsBill = BillWithSettings();
+
+            settingsBill.setCallCost(2.50);
+            settingsBill.setSmsCost(0.85);
+            settingsBill.setCriticalLevel(10);
+
+            settingsBill.makeCall();
+            settingsBill.makeCall();
+            settingsBill.makeCall();
+            settingsBill.makeCall();
+            settingsBill.makeCall();
+
+
+            assert.equal("critical", settingsBill.totalClassName());
+         })
         });
           
     
